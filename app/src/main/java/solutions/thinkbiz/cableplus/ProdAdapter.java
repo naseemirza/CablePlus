@@ -1,6 +1,7 @@
 package solutions.thinkbiz.cableplus;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -28,7 +29,7 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
     private Context mCtx;
     private List<ProdModel> productList;
     AsyncResult<Integer> asyncResult_addNewConnection;
-    int contr=0;
+   // int i;
                                                                 // , ArrayList<String> arraylist
     public ProdAdapter(Context mCtx, List<ProdModel> productList,AsyncResult<Integer> asyncResult_addNewConnection) {
         this.mCtx = mCtx;
@@ -61,7 +62,6 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(mCtx,R.layout.cardspinneritem, users1);
         holder.spool.setAdapter(adapter);
 
-
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +70,7 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
                 i++;
                 holder.countr.setText(String.valueOf(""+ i));
                 productList.get(position).setCount(i);
-               // Log.e("counter", String.valueOf(i));
+                Log.e("counter", String.valueOf(i));
 
             }
 
@@ -79,7 +79,6 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 int i=productList.get(position).getCount();
 
@@ -96,11 +95,24 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
             @Override
             public void onClick(View v) {
 
+               //SharedPreferences pref = v.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+               // SharedPreferences.Editor edit = pref.edit();
+                //edit.putString("qty", String.valueOf(i));
                 asyncResult_addNewConnection.success(position);
+
                 //contr++;
                 //holder.CartItem.setText(String.valueOf(contr));
             }
         });
+
+//        holder.setItemClickListener(new RecyclerViewItemClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//
+//
+//
+//            }
+//        });
     }
 
 
@@ -110,7 +122,7 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
     }
 
     // implements View.OnClickListener
-    class ProductViewHolder extends RecyclerView.ViewHolder  {
+    class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
         TextView textViewTitle;
         TextView textstock;
@@ -122,7 +134,7 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
         //TextView CartItem;
 
 
-        //private RecyclerViewItemClickListener itemClickListener;
+        private RecyclerViewItemClickListener itemClickListener;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -137,21 +149,21 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
             spool=itemView.findViewById(R.id.spinnerSpool);
             addtocart=itemView.findViewById(R.id.Addtocart);
            // CartItem=itemView.findViewById(R.id.cartcounter);
-            // itemView.setOnClickListener(this);
+             itemView.setOnClickListener(this);
 
         }
 
-//        @Override
-//        public void onClick(View v) {
-//            this.itemClickListener.onClick(v,getLayoutPosition());
-//
-//        }
-//
-//        public void setItemClickListener(RecyclerViewItemClickListener ic)
-//        {
-//            this.itemClickListener=ic;
-//
-//        }
+        @Override
+        public void onClick(View v) {
+            this.itemClickListener.onClick(v,getLayoutPosition());
+
+        }
+
+        public void setItemClickListener(RecyclerViewItemClickListener ic)
+        {
+            this.itemClickListener=ic;
+
+        }
     }
 }
 

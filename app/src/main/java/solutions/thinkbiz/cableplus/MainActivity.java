@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -68,12 +69,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 String actname="Cart";
+                String itemsnumber= String.valueOf(contr);
                 SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
                 edit.putString("Actvname",actname);
+                edit.putString("Counter",itemsnumber);
+               // Log.e("counter",itemsnumber);
 
                 edit.apply();
-                Intent intent = new Intent(MainActivity.this, CartItemsActivity.class);
+                Intent intent = new Intent(MainActivity.this, OrderPageActivity.class);
                 startActivity(intent);
             }
         });
@@ -109,6 +113,10 @@ public class MainActivity extends AppCompatActivity
     AsyncResult<Integer> asyncResult_addNewConnection = new AsyncResult<Integer>() {
         @Override
         public void success(Integer click) {
+
+           // String qunty= String.valueOf(click);
+
+          //  Log.e("counter",qunty);
 
                 contr++;
                 CartItem.setText(String.valueOf(contr));

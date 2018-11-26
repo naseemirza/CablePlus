@@ -135,7 +135,6 @@
                             android:id="@+id/prodqnty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:layout_marginTop="5dp"
                             android:text="Quantity"
                             android:textAllCaps="false"
@@ -147,7 +146,6 @@
                             android:onClick="decreaseInteger"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-
                             android:src="@drawable/ic_remove_black_24dp" />
 
                         <TextView
