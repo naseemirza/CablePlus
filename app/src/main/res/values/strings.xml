@@ -7,6 +7,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="blank">""</string>
+    <string name="thank_you">One of our team member will get in touch with you shortly to get the required booking information.</string>
+    <string name="messagebox">special shipping instructions ie: Residential?  Lift Gate Truck needed?  Call Ahead Required? If so, please provide Call ahead phone #.  </string>
 
 
     <string-array name="listArray">

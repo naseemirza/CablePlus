@@ -12,8 +12,8 @@
         android:layout_margin="1dp"
         android:clickable="true"
         android:elevation="1dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
+
+
         card_view:cardElevation="1dp">
 
         <RelativeLayout
@@ -25,26 +25,27 @@
             <LinearLayout
                 android:id="@+id/limain"
                 android:clickable="true"
+                android:weightSum="2"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/linimg"
+                android:layout_weight="0.50"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:gravity="start"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
 
                 <ImageView
                     android:id="@+id/compid"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_marginBottom="5dp"
-                    android:paddingEnd="10dp"
-                    android:paddingStart="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/splsh" />
 
@@ -53,82 +54,106 @@
 
                 <LinearLayout
                     android:id="@+id/prdetails"
+                    android:layout_weight="1"
+                    android:layout_gravity="end"
                     android:layout_marginStart="10dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
 
                     <TextView
                         android:id="@+id/prodname"
-                        android:text="Product Name"
-                        android:layout_marginStart="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
                         android:layout_marginTop="15dp"
-                        android:textSize="13sp"
+                        android:text="Product Name"
                         android:textAllCaps="false"
                         android:textColor="@color/colorBlack"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:textSize="16sp" />
 
                     <LinearLayout
                         android:id="@+id/stock"
-                        android:layout_marginStart="10dp"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/prodstock"
-                            android:text="SKU : "
-                            android:textSize="13sp"
-                            android:textAllCaps="false"
-                            android:textColor="@color/colorBlack"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="SKU"
+                            android:textAllCaps="false"
+                            android:textColor="@color/lightblack"
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/prodstock1"
-                            android:text="0001"
-                            android:textSize="13sp"
-                            android:textAllCaps="false"
-                            android:textColor="@color/colorBlack"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="22dp"
+                            android:text=" 0001"
+                            android:textAllCaps="false"
+                            android:textColor="@color/lightblack"
+                            android:textSize="13sp" />
 
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/spinnerPgqlt1"
-                        android:layout_width="wrap_content"
-                        android:clickable="false"
+                        android:id="@+id/spool"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <Spinner
-                            android:id="@+id/spinnerSpool"
-                            android:dropDownWidth="fill_parent"
-                            android:layout_width="match_parent"
-                            android:paddingRight="8dp"
-                            android:layout_height="match_parent"
-                            android:gravity="start" />
+                        <TextView
+                            android:id="@+id/spooltxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SPOOL"
+                            android:textAllCaps="false"
+                            android:textColor="@color/lightblack"
+                            android:textSize="13sp" />
 
-                        <!--<ImageView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:layout_marginEnd="30dp"-->
-                            <!--android:clickable="false"-->
-                            <!--android:src="@drawable/ic_arrow_drop_down_black_24dp" />-->
+                        <TextView
+                            android:id="@+id/spooltext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text=" spool text"
+                            android:textAllCaps="false"
+                            android:textColor="@color/lightblack"
+                            android:textSize="13sp" />
+
 
                     </LinearLayout>
 
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/spinnerPgqlt1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:clickable="false"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<Spinner-->
+                    <!--android:id="@+id/spinnerSpool"-->
+                    <!--android:dropDownWidth="fill_parent"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:paddingRight="8dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="start" />-->
+                    <!---->
+
+                    <!--</LinearLayout>-->
+
                     <LinearLayout
                         android:id="@+id/qnty"
-                        android:layout_marginStart="10dp"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
 
                         <TextView
@@ -138,55 +163,55 @@
                             android:layout_marginTop="5dp"
                             android:text="Quantity"
                             android:textAllCaps="false"
-                            android:textColor="@color/colorBlack"
+                            android:textColor="@color/lightblack"
                             android:textSize="13sp" />
 
                         <ImageButton
                             android:id="@+id/remov"
-                            android:onClick="decreaseInteger"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
+                            android:layout_marginStart="8dp"
+                            android:onClick="decreaseInteger"
                             android:src="@drawable/ic_remove_black_24dp" />
 
                         <TextView
                             android:id="@+id/editqnty"
                             android:layout_width="35dp"
                             android:layout_height="23dp"
-                            android:textSize="12sp"
-                            android:text="1"
-                            android:layout_marginStart="-4dp"
                             android:layout_marginEnd="-4dp"
-                            android:ellipsize="end"
-                            android:cursorVisible="false"
+                            android:layout_marginStart="-4dp"
                             android:layout_marginTop="6dp"
                             android:background="@drawable/editextborder"
+                            android:ellipsize="end"
+
                             android:gravity="center"
+                            android:text="1"
                             android:textAlignment="center"
-                            android:textCursorDrawable="@color/darkgray" />
+                            android:textCursorDrawable="@color/darkgray"
+                            android:textSize="12sp" />
 
                         <ImageButton
                             android:id="@+id/add"
-                            android:onClick="increaseInteger"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
+                            android:onClick="increaseInteger"
                             android:src="@drawable/ic_add_black_24dp" />
 
-                </LinearLayout>
+                    </LinearLayout>
 
                     <Button
                         android:id="@+id/Addtocart"
-                        android:textColor="@color/colorWhite"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/cardbuttonview"
                         android:text="Add To Cart"
-                        android:textSize="13sp"
-                        android:textAllCaps="false" />
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 

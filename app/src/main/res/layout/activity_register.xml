@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="solutions.thinkbiz.cableplus.RegisterActivity">
 
+    <ScrollView
+        android:id="@+id/scrolview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/re"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -97,7 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextphn"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="110dp"
@@ -107,6 +117,7 @@
             android:id="@+id/rb1"
             android:buttonTint="@color/colorBlack"
             android:text="Shopkeeper"
+            
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -168,13 +179,15 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
-        android:background="@color/lightblack"
-        android:text="Login"
+        android:background="@color/buttonbackgrnd"
+        android:text="Submit"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="15sp"
         android:textStyle="bold" />
 
+        </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

@@ -17,14 +17,22 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/splsh" />
 
+    <!--<TextView-->
+        <!--android:id="@+id/usernametext"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:textColor="@color/colorBlack"-->
+        <!--android:text="User Type"-->
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1" />-->
+
     <TextView
-        android:id="@+id/corptext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:id="@+id/textViewmail"
+        android:paddingLeft="20dp"
         android:textColor="@color/colorBlack"
-        android:text="Naseem"
         android:layout_marginBottom="20dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email" />
 
 </LinearLayout>

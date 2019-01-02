@@ -14,5 +14,6 @@
     <color name="DarkGreen"> #5ec639</color>
     <color name="red"> #FF0000</color>
     <color name="darkgray">#545454</color>
-    <color name="lightblack">#333333</color>
+    <color name="lightblack">#323232</color>
+    <color name="buttonbackgrnd">#B38156</color>
 </resources>

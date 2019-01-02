@@ -4,74 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context="solutions.thinkbiz.cableplus.OrderPageActivity">
 
-    <LinearLayout
-        android:id="@+id/lidet"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        android:background="@drawable/linborder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Image"
-            android:background="@drawable/linborder"
-            android:layout_gravity="start"
-            android:textColor="@color/colorBlack"
-            android:textSize="15sp"
-            android:gravity="center_horizontal"
-
-            android:paddingRight="-10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:maxLines="1"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1"
-            />
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            android:background="@drawable/linborder"
-            android:textSize="15sp"
-            android:textColor="@color/colorBlack"
-            android:gravity="center_horizontal"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:maxLines="1"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Qty"
-            android:textSize="15sp"
-            android:background="@drawable/linborder"
-            android:textColor="@color/colorBlack"
-            android:gravity="center_horizontal"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:maxLines="1"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1"
-            />
-
-    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
 
-        android:id="@+id/my_recycler_view"
-        android:layout_below="@+id/lidet"
+        android:id="@+id/myRecyclerID"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="horizontal" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:scrollbars="horizontal">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <include
+        android:id="@+id/footr"
+        layout="@layout/footerbtn" />
 
 </RelativeLayout>

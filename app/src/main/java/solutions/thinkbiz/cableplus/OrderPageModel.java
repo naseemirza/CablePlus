@@ -8,13 +8,12 @@ public class OrderPageModel {
 
     private String name;
     private int image;
-    private int count;
+    private int quantity;
 
-    public OrderPageModel(String name, int image, int count) {
+    public OrderPageModel(String name, int image, int quantity) {
         this.name = name;
-
         this.image = image;
-        this.count = count;
+        this.quantity = quantity;
     }
 
     public String getName() {
@@ -25,7 +24,6 @@ public class OrderPageModel {
         this.name = name;
     }
 
-
     public int getImage() {
         return image;
     }
@@ -34,11 +32,11 @@ public class OrderPageModel {
         this.image = image;
     }
 
-    public int getCount() {
-        return count;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

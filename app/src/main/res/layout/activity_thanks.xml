@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="solutions.thinkbiz.cableplus.ThanksActivity">
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:id="@+id/lin11"
+       android:background="@color/buttonbackgrnd"
+       android:gravity="center_horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <ImageView
+           android:id="@+id/splash"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:layout_marginBottom="90dp"
+           android:layout_marginTop="90dp"
+           android:background="@drawable/thanks" />
+
+   </LinearLayout>
+
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/lin11"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/star" />
+
+    <TextView
+        android:id="@+id/thnks"
+        android:text="Thank you !.."
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@+id/star"
+        android:textColor="@color/colorBlack"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/thnaks1"
+        android:text="@string/thank_you"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_below="@+id/thnks"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/thanks2"
+        android:text="You will be contacted on:"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_below="@+id/thnaks1"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:text="+91-9034100630"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_below="@+id/thanks2"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="solutions.thinkbiz.cableplus.BillingActivity">
+
+
+    <ScrollView
+        android:id="@+id/scrolview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/re"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextNm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:textSize="13sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textCursorDrawable="@color/darkgray"
+        android:background="@drawable/editextborder"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:ems="10"
+        android:paddingStart="10dp"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
+    <EditText
+        android:id="@+id/editTextem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextNm"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:textCursorDrawable="@color/darkgray"
+        android:background="@drawable/editextborder"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="13sp"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextem"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textCursorDrawable="@color/darkgray"
+                android:background="@drawable/editextborder"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:textSize="13sp"
+                android:hint="Phone"
+                android:inputType="number"
+                tools:ignore="RtlHardcoded,RtlSymmetry,TextFields" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:textSize="13sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textCursorDrawable="@color/darkgray"
+        android:background="@drawable/editextborder"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:ems="10"
+        android:paddingStart="10dp"
+        android:hint="City"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
+
+
+    <EditText
+        android:id="@+id/zipcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/city"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:textCursorDrawable="@color/darkgray"
+        android:background="@drawable/editextborder"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="13sp"
+        android:hint="Zip Code"
+        android:inputType="number"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zipcode"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:textSize="13sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textCursorDrawable="@color/darkgray"
+        android:background="@drawable/editextborder"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:ems="10"
+        android:paddingStart="10dp"
+        android:hint="Address"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="100dp"
+        android:layout_below="@+id/address"
+        android:textCursorDrawable="@color/darkgray"
+        android:background="@drawable/editextborder"
+        android:gravity="top|left"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="12sp"
+        android:paddingStart="10dp"
+        android:hint="@string/messagebox"
+        android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
+            <Button
+                android:id="@+id/buttonS"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/message"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/buttonbackgrnd"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

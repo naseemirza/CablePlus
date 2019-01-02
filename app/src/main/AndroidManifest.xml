@@ -2,12 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="solutions.thinkbiz.cableplus">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.intent.action.CALL_PRIVILEGED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/playstore_icon"
         android:label="@string/app_name"
-        android:screenOrientation="portrait"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -30,20 +38,28 @@
             android:label="Get Started"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RegisterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ForgotPassActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ForgotPassActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginPageActivity"
             android:label="Get Started"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CartItemsActivity" />
-        <activity android:name=".OrderPageActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+        <activity
+            android:name=".OrderPageActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ProductListing.DemoListing.FoodListActivity" />
+        <activity
+            android:name=".BillingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ThanksActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".History.HistoryActivity"></activity>
     </application>
 
 </manifest>
