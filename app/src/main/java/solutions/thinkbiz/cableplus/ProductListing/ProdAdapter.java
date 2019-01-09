@@ -41,7 +41,11 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
     private List<ProdModel> productList;
     private AsyncResult<Integer> asyncResult_addNewConnection;
      static int i;
-    String Pidib;
+     String Pidib;
+    String qtydb,namedb,urldb;
+    String pricedb;
+
+
 
     public ProdAdapter(Context mCtx, List<ProdModel> productList,AsyncResult<Integer> asyncResult_addNewConnection) {
         this.mCtx = mCtx;
@@ -99,34 +103,39 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
             @Override
             public void onClick(View v) {
 
-                String Pid= product.getPid();
-                String name=product.getName();
-                String price=product.getCount();
-                String image=product.getImage();
+                String Pid = product.getPid();
+                String name = product.getName();
+                String qty = product.getCount();
+                String image = product.getImage();
 
                 DBAdapter db = new DBAdapter(mCtx);
                 db.openDB();
-                Cursor c = db.getTVShows();
-                while (c.moveToNext()){
-                     Pidib = c.getString(4);
-                }
-                if (Pid.equalsIgnoreCase(Pidib)){
-                    long result = db.ReplaceItem(Pid, String.valueOf(price));
-                    if (result == 1) {
-                        Toast.makeText(mCtx, "Updated successfully!", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(mCtx, "Not Updated", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else
-                {
-                    asyncResult_addNewConnection.success(position);
-                    asyncResult_addNewConnection.SendDataMethod(name, image, price, Pid);
-                }
 
-               db.closeDB();
+                Cursor c=null;
+                 c = db.getTVShows();
+
+                    while (c.moveToNext()) {
+                        namedb = c.getString(1);
+                        urldb = c.getString(2);
+                        Pidib = c.getString(4);
+                        qtydb = c.getString(3);
+
+                        if (Pid.equals(Pidib)||(qty.equals(qtydb))) {
+                            long result = db.ReplaceItem(name, image, qty, Pid);
+                            if (result == 1) {
+                                Toast.makeText(mCtx, "Updated successfully!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(mCtx, "Not Updated", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                if (!Pid.equals(Pidib))  {
+                        asyncResult_addNewConnection.success(position, qty);
+                        asyncResult_addNewConnection.SendDataMethod(name, image, qty, Pid);
+                    }
+                db.closeDB();
             }
+
         });
 
     }

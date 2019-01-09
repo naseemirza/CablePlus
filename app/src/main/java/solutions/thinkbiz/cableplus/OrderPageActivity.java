@@ -101,14 +101,14 @@ public class OrderPageActivity extends AppCompatActivity {
             //  i+=1;
             String name = c.getString(1);
             String url = c.getString(2);
-            String price = c.getString(3);
+            String qty = c.getString(3);
             String Pid = c.getString(4);
 
 
             final TVShow tv = new TVShow();
             tv.setName(name);
             tv.setImageUrl(url);
-            tv.setPrice(price);
+            tv.setPrice(qty);
             tv.setPid(Pid);
 
             tvShows.add(tv);

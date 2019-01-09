@@ -5,7 +5,7 @@ package solutions.thinkbiz.cableplus;
  */
 
 public interface AsyncResult<TData> {
-    void success(TData data);
+    void success(TData data, String qty);
     void error(String error);
-    void SendDataMethod(String name, String image, String price, String Pid);
+    void SendDataMethod(String name, String image, String qty, String Pid);
 }

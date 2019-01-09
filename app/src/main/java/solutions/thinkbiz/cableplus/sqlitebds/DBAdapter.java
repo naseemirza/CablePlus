@@ -50,8 +50,6 @@ public class DBAdapter {
     {
         try {
             ContentValues cv=new ContentValues();
-
-
             cv.put(Constants.NAME, name);
             cv.put(Constants.URL, url);
             cv.put(Constants.PRICE, price);
@@ -104,14 +102,19 @@ public class DBAdapter {
         return 0;
     }
 
-    public long ReplaceItem(String pid, String s) {
+    public long ReplaceItem(String name, String image, String s, String pid) {
+
         try {
             helper=new DBHelper(c);
             db=helper.getWritableDatabase();
 
             ContentValues cv = new ContentValues();
+            cv.put(Constants.NAME, name);
+            cv.put(Constants.URL, image);
             cv.put(Constants.PRICE, s);
-            db.update(Constants.TB_NAME, cv, Constants.PROD_ID + "=" + pid, null);
+            cv.put(Constants.PROD_ID, pid);
+           db.update(Constants.TB_NAME, cv, Constants.PROD_ID + "=" + pid, null);
+
 
             return 1;
         }
@@ -122,31 +125,6 @@ public class DBAdapter {
 
     }
 
-    public String CheckExist(String pid) {
-
-        String prodid="";
-         db = helper.getReadableDatabase();
-
-        try {
-            Cursor c = db.query(Constants.TB_NAME, null, Constants.PROD_ID + "=" + pid, new String[]{String.valueOf(pid)},null, null, null);
-            if (c == null) {
-                return prodid;
-            }
-            else {
-                c.moveToFirst();
-                prodid = c.getString(c.getColumnIndex(Constants.PROD_ID));
-
-            }
-
-        }
-
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-        return prodid;
-
-    }
 
  //Log.e("pid",Constants.ROW_ID);
     //RETRIEVE

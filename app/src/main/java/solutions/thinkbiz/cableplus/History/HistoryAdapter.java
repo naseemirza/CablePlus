@@ -35,7 +35,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ProductV
         return new HistoryAdapter.ProductViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(final HistoryAdapter.ProductViewHolder holder, final int position) {
         final HistoryModel product = productList.get(position);
@@ -49,7 +48,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ProductV
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(holder.imageView);
-
     }
 
     @Override
@@ -71,7 +69,5 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ProductV
             textqty = itemView.findViewById(R.id.prodqty);
             imageView = itemView.findViewById(R.id.compid);
         }
-
     }
-
 }

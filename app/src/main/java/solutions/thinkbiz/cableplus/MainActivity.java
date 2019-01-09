@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity
 
     SQLiteDatabase db;
     DBHelper helper;
+     int cartCount = 0 ;
+    int qty1;
 
 
     @Override
@@ -139,17 +141,17 @@ public class MainActivity extends AppCompatActivity
 
         DBAdapter db = new DBAdapter(this);
         db.openDB();
-
         Cursor c = db.getTVShows();
         while (c.moveToNext()) {
-
-            i += 1;
-
+           i += 1;
             String name = c.getString(1);
             String url = c.getString(2);
-            String price = c.getString(3);
+            String qty = c.getString(3);
             String Pid = c.getString(4);
+
+            //cartCount = Integer.parseInt(qty);
         }
+        //CartItem.setText(String.valueOf(cartCount));
         if (i==0)
         {
             int j=0;
@@ -159,6 +161,7 @@ public class MainActivity extends AppCompatActivity
             CartItem.setText(String.valueOf(i));
 
         }
+
          //Log.e("size", String.valueOf(i));
         db.closeDB();
     }
@@ -223,10 +226,10 @@ public class MainActivity extends AppCompatActivity
 
     AsyncResult<Integer> asyncResult_addNewConnection = new AsyncResult<Integer>() {
         @Override
-        public void success(Integer click) {
+        public void success(Integer click, String qty) {
 
                 contr++;
-                CartItem.setText(String.valueOf(i+contr));
+            CartItem.setText(String.valueOf(i+contr));
 
             final Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bunce);
 
@@ -244,8 +247,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         @Override
-        public void SendDataMethod(String name, String image, String price, String Pid) {
-          save(name,image,price,Pid);
+        public void SendDataMethod(String name, String image, String qty, String Pid) {
+          save(name, image, qty, Pid);
         }
 
     };
@@ -265,16 +268,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void save(String name, String url, String price, String Pid) {
+    private void save(String name, String url, String qty, String Pid) {
         DBAdapter db = new DBAdapter(this);
         db.openDB();
 
-        long result = db.add(name, url, price, Pid);
+        long result = db.add(name, url, qty, Pid);
         if (result == 1) {
-
             Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
         }
-
         else {
             Toast.makeText(getApplicationContext(), "Not Added", Toast.LENGTH_SHORT).show();
         }
