@@ -39,9 +39,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
     TextView reg, forgotpass;
     EditText editTextEmail,editTextPass;
-
     Button buttonLogn;
-    String Uroll;
     ProgressDialog progressDialog;
 
     @Override
@@ -59,9 +57,7 @@ public class LoginPageActivity extends AppCompatActivity {
                 String actname="Register Here";
                 SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
-
                 edit.putString("Actvname",actname);
-
                 edit.apply();
                 Intent intent = new Intent(LoginPageActivity.this, RegisterActivity.class);
                 startActivity(intent);
@@ -69,36 +65,26 @@ public class LoginPageActivity extends AppCompatActivity {
         });
 
         forgotpass = (TextView) findViewById(R.id.textViewfrgt);
-
         forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String actname="Forgot Password";
                 SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
-
                 edit.putString("Actvname",actname);
-
                 edit.apply();
                 Intent intent = new Intent(LoginPageActivity.this, ForgotPassActivity.class);
                 startActivity(intent);
             }
         });
 
-
-
-
-
         buttonLogn = (Button) findViewById(R.id.buttonL);
         buttonLogn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Intent intent=new Intent(LoginPageActivity.this,MainActivity.class);
-               // startActivity(intent);
-
                 if (isOnline()) {
-                    //do whatever you want to do
+
                 } else {
                     try {
                         android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(LoginPageActivity.this).create();
@@ -108,15 +94,12 @@ public class LoginPageActivity extends AppCompatActivity {
                         alertDialog.setIcon(R.drawable.ic_warning_black_24dp);
                         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-//                        finish();
                                 startActivity(new Intent(LoginPageActivity.this,LoginPageActivity.class));
 
                             }
                         });
-
                         alertDialog.show();
                     } catch (Exception e) {
-                        //Log.d(SyncStateContract.Constants.TAG, "Show Dialog: " + e.getMessage());
                     }
                 }
 
@@ -124,8 +107,6 @@ public class LoginPageActivity extends AppCompatActivity {
                 {
                     Loginbtn();
                 }
-
-
             }
         });
     }
@@ -180,14 +161,11 @@ public class LoginPageActivity extends AppCompatActivity {
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPass.getText().toString().trim();
 
-
-        String url="http://demotbs.com/dev/cpe/webservicestest/login?";
+        String url="http://cableplus.superflexdirect.com/webservices/login?";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
-                      // Log.e("resp", response);
                         progressDialog.dismiss();
 
                         try {
@@ -199,11 +177,9 @@ public class LoginPageActivity extends AppCompatActivity {
                             String name=obj.getString("user_name");
                             String email=obj.getString("user_email");
                             String phone=obj.getString("user_phone");
-                            //Log.e("uid", user_id);
 
                             if (success.equalsIgnoreCase("1"))
                             {
-
                                     SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                                     SharedPreferences.Editor edit = pref.edit();
                                     edit.putString("email",email);
@@ -219,7 +195,6 @@ public class LoginPageActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     editTextEmail.setText("");
                                     editTextPass.setText("");
-
                             }
                             else
                             {

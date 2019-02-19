@@ -45,8 +45,6 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
     String qtydb,namedb,urldb;
     String pricedb;
 
-
-
     public ProdAdapter(Context mCtx, List<ProdModel> productList,AsyncResult<Integer> asyncResult_addNewConnection) {
         this.mCtx = mCtx;
         this.productList = productList;

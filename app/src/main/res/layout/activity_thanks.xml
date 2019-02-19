@@ -68,11 +68,23 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/phone"
-        android:text="+91-9034100630"
+        android:id="@+id/email"
+        android:text="cablesplus@gmail.com"
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:layout_below="@+id/thanks2"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:text="908-797-4111"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_below="@+id/email"
         android:textColor="@color/colorBlack"
         android:textSize="15sp"
         android:textStyle="bold"

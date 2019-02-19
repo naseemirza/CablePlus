@@ -34,11 +34,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
-            android:label="Get Started"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -52,14 +47,15 @@
         <activity
             android:name=".OrderPageActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ProductListing.DemoListing.FoodListActivity" />
+        />
         <activity
             android:name=".BillingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ThanksActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".History.HistoryActivity"></activity>
+        <activity android:name=".History.HistoryActivity" />
+        <activity android:name=".AboutUsActivity"></activity>
     </application>
 
 </manifest>

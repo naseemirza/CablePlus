@@ -10,5 +10,4 @@ public interface RecyclerViewItemClickListener {
 
     public void onClick(View view, int position);
 
-
 }

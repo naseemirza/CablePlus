@@ -23,9 +23,6 @@ public class MyHolder extends RecyclerView.ViewHolder  {
     ImageView deleteviw;
     ImageButton add,remove;
 
-
-    //private RecyclerViewItemClickListener itemClickListener;
-
     public MyHolder(View itemView) {
         super(itemView);
 
@@ -36,19 +33,6 @@ public class MyHolder extends RecyclerView.ViewHolder  {
         add=(ImageButton)itemView.findViewById(R.id.add);
         remove=(ImageButton)itemView.findViewById(R.id.remov);
 
-
-       // itemView.setOnClickListener(this);
-
     }
 
-//    @Override
-//    public void onClick(View v) {
-//        this.itemClickListener.onClick(v,getLayoutPosition());
-//    }
-//
-//    public void setItemClickListener(RecyclerViewItemClickListener ic)
-//    {
-//        this.itemClickListener=ic;
-//
-//    }
 }

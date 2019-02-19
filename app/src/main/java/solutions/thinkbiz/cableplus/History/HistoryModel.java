@@ -9,11 +9,13 @@ public class HistoryModel {
     private String image;
     private String name;
     private String quantity;
+    private String date;
 
-    public HistoryModel(String image, String name, String quantity) {
+    public HistoryModel(String image, String name, String quantity, String date) {
         this.image = image;
         this.name = name;
         this.quantity = quantity;
+        this.date = date;
     }
 
     public String getImage() {
@@ -38,5 +40,13 @@ public class HistoryModel {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

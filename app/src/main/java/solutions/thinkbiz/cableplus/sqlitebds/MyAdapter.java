@@ -19,17 +19,13 @@ import solutions.thinkbiz.cableplus.R;
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     Context c;
-    ArrayList<TVShow> tvShows;
+    ArrayList<BillingItem> billingItems;
     DBAdapter adapter;
 
-    //static int i;
-
-    public MyAdapter(Context c, ArrayList<TVShow> tvShows) {
+    public MyAdapter(Context c, ArrayList<BillingItem> billingItems) {
         this.c = c;
-        this.tvShows = tvShows;
-
+        this.billingItems = billingItems;
     }
-
 
     //INITIALIZE VH
     @Override
@@ -43,34 +39,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     //BIND DATA
     @Override
     public void onBindViewHolder(final MyHolder holder, final int position) {
-        final String pid=tvShows.get(position).getPid();
-        final String name=tvShows.get(position).getName();
-        final String url=tvShows.get(position).getImageUrl();
-        final String price=tvShows.get(position).getPrice();
+        final String pid= billingItems.get(position).getPid();
+        final String name= billingItems.get(position).getName();
+        final String url= billingItems.get(position).getImageUrl();
+        final String price= billingItems.get(position).getPrice();
 
-        holder.nameTxt.setText(tvShows.get(position).getName());
-        holder.priceTxt.setText(tvShows.get(position).getPrice());
-        PicassoClient.loadImage(c,tvShows.get(position).getImageUrl(),holder.img);
-
-
-
-
-//        Glide.with(c)
-//                .load(tvShows.get(position).getImageUrl())
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .fitCenter()
-//                .into(holder.img);
-
-
+        holder.nameTxt.setText(billingItems.get(position).getName());
+        holder.priceTxt.setText(billingItems.get(position).getPrice());
+        PicassoClient.loadImage(c, billingItems.get(position).getImageUrl(),holder.img);
 
         holder.deleteviw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                tvShows.get(position);
+                billingItems.get(position);
                 adapter = new DBAdapter(c);
                 adapter.deleteItem(pid); // set Dynamic
-                tvShows.remove(position);
+                billingItems.remove(position);
                 notifyDataSetChanged();
                 Toast.makeText(c, "Deleted successfully!", Toast.LENGTH_SHORT).show();
             }
@@ -79,9 +64,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-               int qty= Integer.parseInt(tvShows.get(position).getPrice());
+               int qty= Integer.parseInt(billingItems.get(position).getPrice());
                  qty= qty+1;
 
               //  Log.e("finali", String.valueOf(rid));
@@ -91,7 +74,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
                 long result = db.UpdateItem(pid, String.valueOf(qty));
                 if (result == 1) {
                     holder.priceTxt.setText(String.valueOf(""+ qty));
-                    tvShows.get(position).setPrice(String.valueOf(qty));
+                    billingItems.get(position).setPrice(String.valueOf(qty));
                     Toast.makeText(c, "Updated successfully!", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -105,7 +88,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
             @Override
             public void onClick(View v) {
 
-               int qty1 = Integer.parseInt(tvShows.get(position).getPrice());
+               int qty1 = Integer.parseInt(billingItems.get(position).getPrice());
 
                if (qty1>1) {
                    qty1 = qty1 - 1;
@@ -117,20 +100,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
                    if (result == 1) {
                        holder.priceTxt.setText(String.valueOf("" + qty1));
-                       tvShows.get(position).setPrice(String.valueOf(qty1));
+                       billingItems.get(position).setPrice(String.valueOf(qty1));
                        Toast.makeText(c, "Updated successfully!", Toast.LENGTH_SHORT).show();
                    } else {
                        Toast.makeText(c, "Not Updated", Toast.LENGTH_SHORT).show();
                    }
                    db.closeDB();
 
-
-//                if (finali > 1) {
-//                    finali=finali-1;
-//                    holder.priceTxt.setText(String.valueOf("" + finali));
-//                    tvShows.get(position).setPrice(String.valueOf(finali));
-//
-//                }
                }
             }
         });
@@ -139,9 +115,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     //TOTAL NUM TVSHOWS
     @Override
     public int getItemCount() {
-        return tvShows.size();
-
+        return billingItems.size();
 
     }
-
 }

@@ -172,7 +172,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         //Log.e("resp",Uroll);
-        String url="http://demotbs.com/dev/cpe/webservices/registration?";
+       // String url="http://demotbs.com/dev/cpe/webservices/registration?";
+        String url="http://cableplus.superflexdirect.com/webservices/registration?";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url ,
                 new Response.Listener<String>() {
                     @Override

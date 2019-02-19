@@ -66,8 +66,6 @@ public class DBAdapter {
         return 0;
     }
 
-
-
     //Delete
 
     public void deleteItem(String get_ID)
@@ -135,7 +133,4 @@ public class DBAdapter {
         return db.query(Constants.TB_NAME, columns,null,null,null,null,null);
 
     }
-
-
-
 }

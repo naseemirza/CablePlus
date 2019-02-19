@@ -40,7 +40,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ProductV
         final HistoryModel product = productList.get(position);
 
         holder.textViewTitle.setText(product.getName());
-        holder.textqty.setText("    :   "+product.getQuantity());
+        holder.textqty.setText(" :   "+product.getQuantity());
+        holder.datetx.setText(" :   "+product.getDate());
         holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
 
         Glide.with(mCtx)
@@ -60,6 +61,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ProductV
         TextView textViewTitle;
         ImageView imageView;
         TextView textqty;
+        TextView datetx;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -67,6 +69,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ProductV
 
             textViewTitle = itemView.findViewById(R.id.prodname);
             textqty = itemView.findViewById(R.id.prodqty);
+            datetx = itemView.findViewById(R.id.datetxt);
             imageView = itemView.findViewById(R.id.compid);
         }
     }

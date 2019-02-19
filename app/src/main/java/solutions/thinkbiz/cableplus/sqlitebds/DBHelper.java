@@ -26,13 +26,10 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //db.execSQL(Constants.DELETE_TB);
         db.execSQL(Constants.DROP_TB);
-
-
 
         onCreate(db);
     }

@@ -4,14 +4,14 @@ package solutions.thinkbiz.cableplus.sqlitebds;
  * Created by User on 13-Dec-18.
  */
 
-public class TVShow  {
+public class BillingItem {
 
     private String Pid;
     private String name;
     private String imageUrl;
     private String price;
 
-    public TVShow() {
+    public BillingItem() {
     }
 
     public String getPid() {

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import solutions.thinkbiz.cableplus.sqlitebds.BillingItem;
 import solutions.thinkbiz.cableplus.sqlitebds.DBAdapter;
-import solutions.thinkbiz.cableplus.sqlitebds.TVShow;
 
 public class BillingActivity extends AppCompatActivity {
 
@@ -46,7 +43,7 @@ public class BillingActivity extends AppCompatActivity {
     Button Submit;
     EditText editTextname,emailtxt,editTextphone,citytext,ziptext,addrsstext,msgtext;
     ProgressDialog progressDialog;
-    ArrayList<TVShow> tvShows = new ArrayList<>();
+    ArrayList<BillingItem> billingItems = new ArrayList<>();
     ArrayList<String> pids=new ArrayList<String>();
     ArrayList<String> names=new ArrayList<String>();
     ArrayList<String> quantitys=new ArrayList<String>();
@@ -89,9 +86,7 @@ public class BillingActivity extends AppCompatActivity {
             }
         });
 
-       // db.deleteAll();
-
-        tvShows.clear();
+        billingItems.clear();
         DBAdapter db = new DBAdapter(this);
         db.openDB();
 
@@ -104,31 +99,24 @@ public class BillingActivity extends AppCompatActivity {
             String price = c.getString(3);
             String Pid = c.getString(4);
 
-            final TVShow tv = new TVShow();
+            final BillingItem tv = new BillingItem();
             tv.setName(name);
             tv.setImageUrl(url);
             tv.setPrice(price);
             tv.setPid(Pid);
 
-            tvShows.add(tv);
+            billingItems.add(tv);
             Log.e("resp", String.valueOf(price));
 
         }
 
-        for (int k =0;k<tvShows.size();k++){
+        for (int k = 0; k< billingItems.size(); k++){
 
-            pids.add(tvShows.get(k).getPid());
-            names.add(tvShows.get(k).getName());
-            quantitys.add(tvShows.get(k).getPrice());
-
+            pids.add(billingItems.get(k).getPid());
+            names.add(billingItems.get(k).getName());
+            quantitys.add(billingItems.get(k).getPrice());
 
         }
-
-       // Log.e("resp", String.valueOf(names));
-       // Log.e("resp", String.valueOf(pid));
-        //Log.e("resp", String.valueOf(quantity));
-
-
             editTextname = (EditText) findViewById(R.id.editTextNm);
             emailtxt = (EditText) findViewById(R.id.editTextem);
             editTextphone = (EditText) findViewById(R.id.phone);
@@ -145,19 +133,6 @@ public class BillingActivity extends AppCompatActivity {
             Submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-//                String actname="Thank You";
-//                SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-//                SharedPreferences.Editor edit = pref.edit();
-//
-//                    edit.putString("Actvname",actname);
-//                    edit.putString("prod_id", String.valueOf(pids));
-//                    edit.putString("prod_name", String.valueOf(names));
-//                    edit.putString("prod_quantity", String.valueOf(quantitys));
-//
-//                edit.apply();
-                //Intent intent = new Intent(BillingActivity.this, ThanksActivity.class);
-               // startActivity(intent);
 
                     if (isValidate()) {
                         SubmitDetails();
@@ -209,11 +184,6 @@ public class BillingActivity extends AppCompatActivity {
             addrsstext.requestFocus();
             return false;
         }
-//        if (msgtext.getText().toString().length() == 0) {
-//            msgtext.setError("Address not entered");
-//            msgtext.requestFocus();
-//            return false;
-//        }
         return true;
     }
 
@@ -230,8 +200,7 @@ public class BillingActivity extends AppCompatActivity {
         final String address = addrsstext.getText().toString().trim();
         final String message = msgtext.getText().toString().trim();
 
-        //Log.e("resp",Uroll);
-        String url="http://demotbs.com/dev/cpe/webservices/order?";
+        String url="http://cableplus.superflexdirect.com/webservices/order?";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url ,
                 new Response.Listener<String>() {
                     @Override
@@ -243,6 +212,7 @@ public class BillingActivity extends AppCompatActivity {
                             JSONObject obj = new JSONObject(response);
                             String success= obj.getString("s");
                             String error= obj.getString("e");
+
                             String msg=obj.getString("m");
 
                             if (success.equalsIgnoreCase("1"))

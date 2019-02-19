@@ -84,14 +84,12 @@ public class HistoryActivity extends AppCompatActivity {
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        String url="http://demotbs.com/dev/cpe/webservices/orderitem?user_id="+userid;
+        String url="http://cableplus.superflexdirect.com/webservices/orderitem?user_id="+userid;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
-                        // Log.e("rootJsonArray",response);
                         progressBar.setVisibility(View.INVISIBLE);
 
                         try {
@@ -105,12 +103,12 @@ public class HistoryActivity extends AppCompatActivity {
 
                                 mExampleList1.add(new HistoryModel(object.optString("image"),
                                         object.optString("product_name"),
-                                        object.optString("quantity")));
+                                        object.optString("quantity"),
+                                        object.optString("order_date")));
 
                             }
 
                             Log.e("rootJsonArray",mExampleList1.size()+"");
-                            //,asyncResult_addNewConnection
                             mExampleAdapter1 = new HistoryAdapter(HistoryActivity.this, mExampleList1);
                             mRecyclerview1.setAdapter(mExampleAdapter1);
                             mExampleAdapter1.notifyDataSetChanged();
