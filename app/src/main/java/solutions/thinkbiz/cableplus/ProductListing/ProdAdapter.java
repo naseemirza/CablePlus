@@ -63,8 +63,8 @@ public class ProdAdapter extends RecyclerView.Adapter<ProdAdapter.ProductViewHol
        final ProdModel product = productList.get(position);
 
         holder.textViewTitle.setText(product.getName());
-        holder.textstock.setText("    :   "+product.getStock());
-        holder.textspool.setText("    :   "+product.getSpool());
+        holder.textstock.setText(": "+product.getStock());
+        holder.textspool.setText(": "+product.getSpool());
         holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
 
         Glide.with(mCtx)

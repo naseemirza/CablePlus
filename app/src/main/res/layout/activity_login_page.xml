@@ -49,13 +49,14 @@
                 android:textSize="13sp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textCursorDrawable="@color/darkgray"
+                android:textCursorDrawable="@color/colorBlack"
+                android:cursorVisible="true"
                 android:background="@color/colorWhite"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:ems="10"
                 android:paddingStart="10dp"
-                android:hint="User id*"
+                android:hint="User Email*"
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp" />
 
@@ -68,7 +69,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:ems="10"
-                android:textCursorDrawable="@color/darkgray"
+                android:textCursorDrawable="@color/colorBlack"
+                android:cursorVisible="true"
                 android:background="@color/colorWhite"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
@@ -119,23 +121,9 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textViewfrgt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewRgs"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="Forgot Password"
-                android:textColor="#b78959"
-                android:textSize="14sp" />
-
 
 
         </RelativeLayout>
     </ScrollView>
-
-
 
 </RelativeLayout>

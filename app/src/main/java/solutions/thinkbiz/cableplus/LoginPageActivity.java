@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -37,15 +38,27 @@ import java.util.Map;
 
 public class LoginPageActivity extends AppCompatActivity {
 
-    TextView reg, forgotpass;
+    TextView reg;
     EditText editTextEmail,editTextPass;
     Button buttonLogn;
     ProgressDialog progressDialog;
+    public static Boolean booltype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        booltype=pref.getBoolean("Booltype", Boolean.parseBoolean(""));
+
+        if(booltype){
+            startActivity(new Intent(LoginPageActivity.this, MainActivity.class));
+            finish();
+        }
 
         editTextEmail=(EditText)findViewById(R.id.editTextU);
         editTextPass=(EditText)findViewById(R.id.editTextP);
@@ -60,20 +73,6 @@ public class LoginPageActivity extends AppCompatActivity {
                 edit.putString("Actvname",actname);
                 edit.apply();
                 Intent intent = new Intent(LoginPageActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        forgotpass = (TextView) findViewById(R.id.textViewfrgt);
-        forgotpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String actname="Forgot Password";
-                SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                SharedPreferences.Editor edit = pref.edit();
-                edit.putString("Actvname",actname);
-                edit.apply();
-                Intent intent = new Intent(LoginPageActivity.this, ForgotPassActivity.class);
                 startActivity(intent);
             }
         });
@@ -180,6 +179,7 @@ public class LoginPageActivity extends AppCompatActivity {
 
                             if (success.equalsIgnoreCase("1"))
                             {
+                                    booltype=true;
                                     SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                                     SharedPreferences.Editor edit = pref.edit();
                                     edit.putString("email",email);
@@ -187,6 +187,7 @@ public class LoginPageActivity extends AppCompatActivity {
                                     edit.putString("name",name);
                                     edit.putString("email",email);
                                     edit.putString("phone",phone);
+                                    edit.putBoolean("Booltype",booltype);
 
                                     Toast.makeText(LoginPageActivity.this, msg, Toast.LENGTH_SHORT).show();
                                     progressDialog.dismiss();
@@ -229,13 +230,14 @@ public class LoginPageActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    @Override
-    public void onBackPressed() {
-
-        Intent startMain = new Intent(Intent.ACTION_MAIN);
-        startMain.addCategory(Intent.CATEGORY_HOME);
-        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(startMain);
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//
+//    }
 }

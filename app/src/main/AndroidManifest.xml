@@ -37,9 +37,6 @@
             android:name=".RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ForgotPassActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".LoginPageActivity"
             android:label="Get Started"
             android:screenOrientation="portrait"
@@ -55,7 +52,9 @@
             android:name=".ThanksActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".History.HistoryActivity" />
-        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".ComparChartActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

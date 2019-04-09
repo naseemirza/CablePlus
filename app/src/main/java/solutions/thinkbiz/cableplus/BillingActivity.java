@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -38,21 +39,25 @@ import solutions.thinkbiz.cableplus.sqlitebds.DBAdapter;
 
 public class BillingActivity extends AppCompatActivity {
 
-    String Actname , userid,name,email,phone ;
+    String Actname , userid,name,email,phone, city, state, zipcode, address, message ;
     TextView textname;
     Button Submit;
-    EditText editTextname,emailtxt,editTextphone,citytext,ziptext,addrsstext,msgtext;
+    EditText editTextname,emailtxt,editTextphone,citytext,ziptext,addrsstext,msgtext,statetext;
     ProgressDialog progressDialog;
     ArrayList<BillingItem> billingItems = new ArrayList<>();
     ArrayList<String> pids=new ArrayList<String>();
     ArrayList<String> names=new ArrayList<String>();
     ArrayList<String> quantitys=new ArrayList<String>();
     DBAdapter db;
+    //final String name, email, phone, city, state, zipcode, address, message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_billing);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -65,6 +70,13 @@ public class BillingActivity extends AppCompatActivity {
         name = pref.getString("name", "");
         email = pref.getString("email", "");
         phone = pref.getString("phone", "");
+
+        city = pref.getString("citytxt", "");
+        state = pref.getString("statetxt", "");
+        zipcode = pref.getString("ziptxt", "");
+        address = pref.getString("addresstxt", "");
+        message = pref.getString("msgtxt", "");
+
         textname = (TextView) findViewById(R.id.textname);
         textname.setText(Actname);
 
@@ -121,6 +133,7 @@ public class BillingActivity extends AppCompatActivity {
             emailtxt = (EditText) findViewById(R.id.editTextem);
             editTextphone = (EditText) findViewById(R.id.phone);
             citytext = (EditText) findViewById(R.id.city);
+            statetext = (EditText) findViewById(R.id.state);
             ziptext = (EditText) findViewById(R.id.zipcode);
             addrsstext = (EditText) findViewById(R.id.address);
             msgtext = (EditText) findViewById(R.id.message);
@@ -128,6 +141,13 @@ public class BillingActivity extends AppCompatActivity {
         editTextname.setText(name);
         emailtxt.setText(email);
         editTextphone.setText(phone);
+        citytext.setText(city);
+        statetext.setText(state);
+        ziptext.setText(zipcode);
+        addrsstext.setText(address);
+        msgtext.setText(message);
+
+
 
             Submit = (Button) findViewById(R.id.buttonS);
             Submit.setOnClickListener(new View.OnClickListener() {
@@ -168,22 +188,30 @@ public class BillingActivity extends AppCompatActivity {
             editTextphone.requestFocus();
             return false;
         }
+        if (addrsstext.getText().toString().length() == 0) {
+            addrsstext.setError("Address not entered");
+            addrsstext.requestFocus();
+            return false;
+        }
 
         if (citytext.getText().toString().length() == 0) {
             citytext.setError("City not entered");
             citytext.requestFocus();
             return false;
         }
+        if (statetext.getText().toString().length() == 0) {
+            statetext.setError("State not entered");
+            statetext.requestFocus();
+            return false;
+        }
+
         if (ziptext.getText().toString().length() == 0) {
             ziptext.setError("Zip code not entered");
             ziptext.requestFocus();
             return false;
         }
-        if (addrsstext.getText().toString().length() == 0) {
-            addrsstext.setError("Address not entered");
-            addrsstext.requestFocus();
-            return false;
-        }
+
+
         return true;
     }
 
@@ -192,13 +220,14 @@ public class BillingActivity extends AppCompatActivity {
         progressDialog.setMessage("Signing Up...");
         progressDialog.show();
 
-        final String name = editTextname.getText().toString().trim();
-        final String email = emailtxt.getText().toString().trim();
-        final String phone = editTextphone.getText().toString().trim();
-        final String city = citytext.getText().toString().trim();
-        final String zipcode = ziptext.getText().toString().trim();
-        final String address = addrsstext.getText().toString().trim();
-        final String message = msgtext.getText().toString().trim();
+         name = editTextname.getText().toString().trim();
+         email = emailtxt.getText().toString().trim();
+         phone = editTextphone.getText().toString().trim();
+         city = citytext.getText().toString().trim();
+         state = statetext.getText().toString().trim();
+         zipcode = ziptext.getText().toString().trim();
+         address = addrsstext.getText().toString().trim();
+         message = msgtext.getText().toString().trim();
 
         String url="http://cableplus.superflexdirect.com/webservices/order?";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url ,
@@ -224,18 +253,24 @@ public class BillingActivity extends AppCompatActivity {
                                 SharedPreferences.Editor edit = pref.edit();
 
                                 edit.putString("Actvname",actname);
+                                edit.putString("citytxt",city);
+                                edit.putString("ziptxt",zipcode);
+                                edit.putString("addresstxt",address);
+                                edit.putString("msgtxt",message);
+                                edit.putString("statetxt",state);
                                 edit.apply();
                                 Intent intent=new Intent(BillingActivity.this, ThanksActivity.class);
                                 Toast.makeText(BillingActivity.this, msg, Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
                                 progressDialog.dismiss();
-                                editTextname.setText("");
-                                emailtxt.setText("");
-                                editTextphone.setText("");
-                                citytext.setText("");
-                                ziptext.setText("");
-                                addrsstext.setText("");
-                                msgtext.setText("");
+//                                editTextname.setText("");
+//                                emailtxt.setText("");
+//                                editTextphone.setText("");
+//                                citytext.setText("");
+//                                ziptext.setText("");
+//                                addrsstext.setText("");
+//                                msgtext.setText("");
+//                                statetext.setText("");
                                 db.deleteAll();
 
                             }
@@ -263,10 +298,12 @@ public class BillingActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("name", name);
                 params.put("email", email);
-                params.put("pho", phone);
-                params.put("city", city);
-                params.put("zip_code", zipcode);
+                params.put("phone", phone);
                 params.put("address", address);
+                params.put("city", city);
+                params.put("state", state);
+                params.put("zip_code", zipcode);
+                params.put("message", message);
                 params.put("user_id", userid);
                 params.put("product_id", String.valueOf(pids));
                 params.put("productQuantity", String.valueOf(quantitys));

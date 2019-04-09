@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -49,6 +50,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.backbar);
@@ -80,7 +84,6 @@ public class RegisterActivity extends AppCompatActivity {
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 if(isValidate())
                 {
@@ -163,17 +166,26 @@ public class RegisterActivity extends AppCompatActivity {
         final String password = editTextPass.getText().toString().trim();
         final String usertype = ((RadioButton) findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
 
-        if (usertype.equals("Shopkeeper"))
+        if (usertype.equals("Dealer"))
         {
             Uroll="1";
         }
-        else if (usertype.equals("Wholesaler")){
+        else if (usertype.equals("Distributor")){
             Uroll="2";
         }
+        else if (usertype.equals("Wholesaler")){
+            Uroll="3";
+        }
+        else if (usertype.equals("Manufacturer")){
+            Uroll="4";
+        }
+        else if (usertype.equals("Franchise")){
+            Uroll="5";
+        }
 
-        //Log.e("resp",Uroll);
+      // Log.e("resp",Uroll);
        // String url="http://demotbs.com/dev/cpe/webservices/registration?";
-        String url="http://cableplus.superflexdirect.com/webservices/registration?";
+         String url="http://cableplus.superflexdirect.com/webservices/registration?";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url ,
                 new Response.Listener<String>() {
                     @Override
@@ -235,5 +247,7 @@ public class RegisterActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
+
 
 }

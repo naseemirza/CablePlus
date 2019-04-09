@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
@@ -43,6 +44,7 @@ import solutions.thinkbiz.cableplus.ProductListing.ProdAdapter;
 import solutions.thinkbiz.cableplus.ProductListing.ProdModel;
 import solutions.thinkbiz.cableplus.sqlitebds.DBAdapter;
 import solutions.thinkbiz.cableplus.sqlitebds.DBHelper;
+import static solutions.thinkbiz.cableplus.LoginPageActivity.booltype;
 
 
 public class MainActivity extends AppCompatActivity
@@ -66,11 +68,15 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         usermail = pref.getString("email", "");
         title = pref.getString("title", "");
         img = pref.getString("image", "");
         userid=pref.getString("user_id","");
+        booltype=pref.getBoolean("Booltype", Boolean.parseBoolean(""));
 
         mExampleList1 = new ArrayList<>();
         mRequestQueue1 = Volley.newRequestQueue(this);
@@ -271,6 +277,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_logout) {
+            booltype=false;
+            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = pref.edit();
+            edit.putBoolean("Booltype",booltype);
+            edit.apply();
             startActivity(new Intent(MainActivity.this,LoginPageActivity.class));
         }
         else if (id == R.id.nav_aboutus) {
@@ -282,13 +293,26 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_history) {
+        }
+        else if (id == R.id.nav_history) {
             String actname="History";
             SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = pref.edit();
             edit.putString("Actvname",actname);
             edit.apply();
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity(intent);
+
+        }
+
+
+        else if (id == R.id.nav_compare) {
+            String actname="Product Comparision Chart";
+            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = pref.edit();
+            edit.putString("Actvname",actname);
+            edit.apply();
+            Intent intent = new Intent(MainActivity.this, ComparChartActivity.class);
             startActivity(intent);
 
         }

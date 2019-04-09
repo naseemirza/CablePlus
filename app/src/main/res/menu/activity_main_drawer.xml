@@ -16,6 +16,11 @@
 
 
         <item
+            android:id="@+id/nav_compare"
+            android:icon="@drawable/ic_compare_arrows_black_24dp"
+            android:title="Product Comparision Chart" />
+
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logouticon"
             android:title="Logout" />

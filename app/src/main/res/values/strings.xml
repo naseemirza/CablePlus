@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CablePlus</string>
+    <string name="app_name">SuperFlex Landscape Lighting Cable</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,7 +7,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="blank">""</string>
-    <string name="thank_you">One of our team member will get in touch with you shortly to get the required booking information.</string>
+    <string name="thank_you">A quotation along with an ETA will be sent to you promptly by one of our team members.</string>
+    <string name="contact">You will be contacted by</string>
+    <string name="mail">cablesplus@gmail.com</string>
+    <string name="thanks">Thank you for the opportunity and we look forward to servicing  your Landscape Lighting Wire needs!</string>
     <string name="messagebox">special shipping instructions ie: Residential?  Lift Gate Truck needed?  Call Ahead Required? If so, please provide Call ahead phone #.  </string>
     <string name="aboutus">Landscape lighting demands high quality long lasting wiring solutions.
         From simple to complex landscape lighting designs you need high quality low voltage direct burial landscape lighting cable.\n

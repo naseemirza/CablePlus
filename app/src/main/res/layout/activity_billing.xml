@@ -15,7 +15,7 @@
         <RelativeLayout
             android:id="@+id/re"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/editTextNm"
@@ -77,11 +77,32 @@
                 android:inputType="number"
                 tools:ignore="RtlHardcoded,RtlSymmetry,TextFields" />
 
+            <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phone"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp"
+            android:textSize="13sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textCursorDrawable="@color/darkgray"
+            android:background="@drawable/editextborder"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:ems="10"
+            android:paddingStart="10dp"
+            android:hint="Street address"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
     <EditText
         android:id="@+id/city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/phone"
+        android:layout_below="@+id/address"
         android:layout_alignParentStart="true"
         android:layout_marginTop="15dp"
         android:textSize="13sp"
@@ -98,13 +119,34 @@
         android:paddingLeft="10dp"
         tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
 
+            <EditText
+                android:id="@+id/state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/city"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="15dp"
+                android:textSize="13sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textCursorDrawable="@color/darkgray"
+                android:background="@drawable/editextborder"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:ems="10"
+                android:paddingStart="10dp"
+                android:hint="State"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
+
 
 
     <EditText
         android:id="@+id/zipcode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/city"
+        android:layout_below="@+id/state"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -121,33 +163,12 @@
         tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
 
     <EditText
-        android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/zipcode"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:textSize="13sp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textCursorDrawable="@color/darkgray"
-        android:background="@drawable/editextborder"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:ems="10"
-        android:paddingStart="10dp"
-        android:hint="Address"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        tools:ignore="RtlHardcoded,RtlSymmetry,TextFields"/>
-
-    <EditText
         android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingBottom="100dp"
-        android:layout_below="@+id/address"
+        android:layout_below="@+id/zipcode"
         android:textCursorDrawable="@color/darkgray"
         android:background="@drawable/editextborder"
         android:gravity="top|left"

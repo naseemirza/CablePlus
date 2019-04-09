@@ -16,40 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:textColor="@color/colorBlack"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:text="New User" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:textColor="@color/colorBlack"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        android:text="New User Registration" />
-
 
     <EditText
         android:id="@+id/editTextNm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView5"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:textSize="13sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -103,12 +76,14 @@
         android:hint="Phone Number"
         android:inputType="number" />
 
+
+
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextphn"
         android:layout_marginStart="20dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="110dp"
         android:id="@+id/radioGroup">
@@ -116,21 +91,57 @@
         <RadioButton
             android:id="@+id/rb1"
             android:buttonTint="@color/colorBlack"
-            android:text="Shopkeeper"
-            
+            android:text="Dealer"
+            android:textSize="16sp"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <RadioButton
             android:id="@+id/rb2"
             android:buttonTint="@color/colorBlack"
+            android:text="Distributor"
+            android:textSize="16sp"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            android:buttonTint="@color/colorBlack"
             android:text="Wholesaler"
-            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb4"
+            android:buttonTint="@color/colorBlack"
+            android:text="Manufacturer"
+            android:textSize="16sp"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb5"
+            android:buttonTint="@color/colorBlack"
+            android:text="Franchise"
+            android:textSize="16sp"
+            android:scaleX="0.85"
+            android:scaleY="0.85"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
 
     </RadioGroup>
+
+
 
     <EditText
         android:id="@+id/editTextpas"
@@ -169,7 +180,6 @@
         android:hint="Confirm Password(5 or more characters)*"
         android:inputType="textPassword" />
 
-
     <Button
         android:id="@+id/buttonL"
         android:layout_width="match_parent"
@@ -178,7 +188,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:background="@color/buttonbackgrnd"
         android:text="Submit"
         android:textAllCaps="false"
