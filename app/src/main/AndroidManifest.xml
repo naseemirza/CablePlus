@@ -53,8 +53,13 @@
             android:screenOrientation="portrait" />
         <activity android:name=".History.HistoryActivity" />
         <activity android:name=".AboutUsActivity" />
-        <activity android:name=".ComparChartActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ComparChartActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SFProdInfoActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".SpecificationActivity"></activity>
     </application>
 
 </manifest>

@@ -50,7 +50,6 @@ public class OrderPageActivity extends AppCompatActivity {
         textname = (TextView) findViewById(R.id.textname);
         textname.setText(Actname);
 
-        checkoutbtn=(Button)findViewById(R.id.checkout);
         ImageButton imageButton = (ImageButton) view.findViewById(R.id.action_bar_back);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +60,8 @@ public class OrderPageActivity extends AppCompatActivity {
 
             }
         });
+
+        checkoutbtn=(Button)findViewById(R.id.checkout);
 
         datalist=(TextView)findViewById(R.id.datavalbl);
         rv = (RecyclerView) findViewById(R.id.myRecyclerID);

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +22,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity
         userid=pref.getString("user_id","");
         booltype=pref.getBoolean("Booltype", Boolean.parseBoolean(""));
 
+
         mExampleList1 = new ArrayList<>();
         mRequestQueue1 = Volley.newRequestQueue(this);
         mRecyclerview1=(RecyclerView)findViewById(R.id.my_recycler_jobs);
@@ -102,6 +105,9 @@ public class MainActivity extends AppCompatActivity
         textViewemail.setText(usermail);
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorBlack));
         toggle.syncState();
+
+
+
 
         CartItem=(TextView) findViewById(R.id.cartcounter);
         CounterItems();
@@ -147,6 +153,10 @@ public class MainActivity extends AppCompatActivity
 
         }
         db.closeDB();
+
+
+
+
     }
     private void parseJSON1() {
 
@@ -304,17 +314,24 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         }
-
-
         else if (id == R.id.nav_compare) {
-            String actname="Product Comparision Chart";
+            String actname="Product Comparisions";
             SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = pref.edit();
             edit.putString("Actvname",actname);
             edit.apply();
             Intent intent = new Intent(MainActivity.this, ComparChartActivity.class);
             startActivity(intent);
+        }
 
+        else if (id == R.id.nav_sfprdinfo) {
+            String actname="Specifications";
+            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = pref.edit();
+            edit.putString("Actvname",actname);
+            edit.apply();
+            Intent intent = new Intent(MainActivity.this, SFProdInfoActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

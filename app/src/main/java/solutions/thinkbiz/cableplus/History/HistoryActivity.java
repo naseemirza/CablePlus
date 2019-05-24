@@ -80,14 +80,12 @@ public class HistoryActivity extends AppCompatActivity {
         mRecyclerview1.setHasFixedSize(true);
 
         parseJSON1();
-
     }
 
     private void parseJSON1() {
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-
         String url="http://cableplus.superflexdirect.com/webservices/orderitem?user_id="+userid;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

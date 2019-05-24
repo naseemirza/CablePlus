@@ -1,6 +1,5 @@
 package solutions.thinkbiz.cableplus;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
@@ -14,59 +13,61 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
-import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
-import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
-import com.shockwave.pdfium.PdfDocument;
 
 import java.io.File;
 import java.io.InputStream;
-import java.util.List;
 
-public class ComparChartActivity extends AppCompatActivity {
+public class SpecificationActivity extends AppCompatActivity {
 
-    private static final String FILENAME = "SF_Product_Comparision_Chart.pdf";
-    PDFView ReadTxt;
-    String Actname;
+    String Actname,filename;
     TextView textname;
+
+   // private static final String FILENAME = "SF_A112.2_Ultra_Lite_Spec_Sheet.pdf";
+    PDFView ReadTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compar_chart);
+        setContentView(R.layout.activity_specification);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.backbar);
-        View view =getSupportActionBar().getCustomView();
+        View view = getSupportActionBar().getCustomView();
 
         SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        Actname=pref.getString("Actvname","");
-        textname=(TextView)findViewById(R.id.textname);
+        Actname = pref.getString("Actvname", "");
+        filename = pref.getString("FILENAME", "");
+        textname = (TextView) findViewById(R.id.textname);
         textname.setText(Actname);
 
-        // Log.e("pid",pid);
+      //  Log.e("file",filename);
+//        Log.e("file",filename1);
+//        Log.e("file",filename2);
 
-        ImageButton imageButton= (ImageButton)view.findViewById(R.id.action_bar_back);
+
+
+        ImageButton imageButton = (ImageButton) view.findViewById(R.id.action_bar_back);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+               // Intent intent=new Intent(SpecificationActivity.this, MainActivity.class);
+               // startActivity(intent);
+
             }
         });
 
-       // getSupportActionBar().setTitle("Product Comparision Chart");
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         ReadTxt=(PDFView)findViewById(R.id.pdfView);
-        File file = new File(this.getCacheDir(), FILENAME);
+        File file = new File(this.getCacheDir(), filename);
 
         if (!file.exists()) {
             try {
-                InputStream asset = this.getAssets().open(FILENAME);
+                InputStream asset = this.getAssets().open(filename);
                 ReadTxt.fromStream(asset)
                         .pages(0)
                         .enableSwipe(true)
@@ -92,5 +93,4 @@ public class ComparChartActivity extends AppCompatActivity {
     @Override    protected void onStart() {
         super.onStart();
     }
-
 }
